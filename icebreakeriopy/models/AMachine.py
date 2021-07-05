@@ -3,12 +3,12 @@ from .ARepo import ARepo
 
 class AMachine:
     def __init__(self, name=None, repos=None):
-        self.__name = name
+        self.name = name
 
         if type(repos) != list:
-            self.__repos = []
+            self.repos = []
         else:
-            self.__repos = repos
+            self.repos = repos
 
     def parseReposFromJsonList(self, repos):
         if type(repos) == list:
@@ -19,10 +19,4 @@ class AMachine:
                 aRepo.parsePacketsFromJsonList(repoJSON.get("packets"))
                 aRepo.parseConfigsFromJsonList(repoJSON.get("configs"))
 
-                self.__repos.append(aRepo)
-
-    def get_name(self):
-        return self.__name
-
-    def get_repos(self):
-        return self.__repos
+                self.repos.append(aRepo)

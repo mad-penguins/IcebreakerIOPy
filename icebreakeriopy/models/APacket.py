@@ -3,26 +3,17 @@ from .AConfig import AConfig
 
 class APacket:
     def __init__(self, name=None, version=None, configs=None):
-        self.__name = name
-        self.__version = version
+        self.name = name
+        self.version = version
 
         if type(configs) != list:
-            self.__configs = []
+            self.configs = []
         else:
-            self.__configs = configs
+            self.configs = configs
 
     def parseConfigsFromJsonList(self, configs):
         if type(configs) == list:
             for configJSON in configs:
                 aConfig = AConfig(name=configJSON.get("name"),
                                   path=configJSON.get("path"))
-                self.__configs.append(aConfig)
-
-    def get_name(self):
-        return self.__name
-
-    def get_version(self):
-        return self.__version
-
-    def get_configs(self):
-        return self.__configs
+                self.configs.append(aConfig)
